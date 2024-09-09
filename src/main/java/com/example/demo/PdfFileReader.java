@@ -10,6 +10,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
 import jakarta.annotation.PostConstruct;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,8 +27,9 @@ public class PdfFileReader {
         this.vectorStore = vectorStore;
     }
 
-    @PostConstruct
-    @GetMapping("/content/print")
+ 
+    @CrossOrigin(origins = "http://127.0.0.1:4200")
+    @GetMapping("/demo/process")
     public void init() {
 
         var config = PdfDocumentReaderConfig.builder()
